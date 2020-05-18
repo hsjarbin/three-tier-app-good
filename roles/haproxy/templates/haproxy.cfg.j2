@@ -29,7 +29,7 @@ backend app-servers
     option forwardfor
 {% for host in groups['apps'] %}
 
-   server {{ host }} {{ host }}.{{ GUID }}.internal:{{ http_port_backend }} cookie check
+   server {{ host }} {{ host }}.{{ GUID }}.internal:{{ http_port_backend }} cookie {{ host }} check
 
 {% endfor %}
 

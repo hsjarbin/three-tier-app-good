@@ -23,12 +23,12 @@
     dest: "{{ tomcat_dst_file }}"
     mode: "{{ tomcat_dst_mode }}"
 
-- name: create directory for tomcat hosts directory
-  file:
-    path: "{{ tomcat_hosts_directory }}"
-    state: directory
+#- name: create directory for tomcat hosts directory
+#  file:
+#    path: "{{ tomcat_hosts_directory }}"
+#    state: directory
 
-- name: copy static index.html for app1 and app2
-  template:
-    src: "{{ tomcat_src_file_app }}"
-    dest: "{{ tomcat_dst_file_all }}"
+#- name: copy static index.html for app1 and app2
+#  template:
+#    src: "{{ tomcat_src_file_app }}"
+#    dest: "{{ tomcat_dst_file_all }}"

@@ -1,0 +1,28 @@
+---
+- name: configuration
+  hosts: all
+  gather_facts: true
+  become: true
+  roles:
+    - {name: repos, tags: [common, base-config]}
+
+- name: deploy haproxy
+  hosts: frontends
+  gather_facts: true
+  become: true
+  roles:
+    - {name: haproxy, tags: [lbs, haproxy]}
+
+- name: deploy tomcat
+  hosts: apps
+  gather_facts: true
+  become: true
+  roles:
+    - {name: tomcat, tags: [apps, tomcat]}
+
+- name: deploy postgres
+  hosts: appdbs
+  gather_facts: true
+  become: true
+  roles:
+    - {name: postgres, tags: [dbs, postgres]}

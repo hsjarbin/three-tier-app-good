@@ -19,7 +19,6 @@
   become: true
   roles:
     - tomcat
-    - apache
 
 - name: deploy postgres
   hosts: appdbs

@@ -4,7 +4,7 @@
   gather_facts: true
   become: true
   roles:
-    - {name: repos, tags: [common, base-config]}
+    - {name: repos, tags: base-config}
 
 - name: deploy haproxy
   hosts: frontends

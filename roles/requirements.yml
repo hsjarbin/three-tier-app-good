@@ -1,0 +1,3 @@
+- src: https://github.com/hsjarbin/three-tier-app-good.git
+  scm: git
+  version: master

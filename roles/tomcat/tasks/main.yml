@@ -1,0 +1,34 @@
+---
+# tasks file for tomcat
+
+- name: install tomcat
+  package:
+    name: "{{ tomcat_package }}"
+    state: latest
+
+- name: start and enable tomcat
+  service:
+    name: "{{ tomcat_service }}"
+    state: started
+    enabled: true
+
+- name: create ansible tomcat directory
+  file:
+    path: "{{ tomcat_directory }}"
+    state: directory
+
+- name: copy static index.html to tomcat {{ tomcat_dst_file }}
+  template:
+    src: "{{ tomcat_src_file }}"
+    dest: "{{ tomcat_dst_file }}"
+    mode: "{{ tomcat_dst_mode }}"
+
+- name: create directory for tomcat hosts directory
+  file:
+    path: "{{ tomcat_hosts_directory }}"
+    state: directory
+
+- name: copy static index.html for app1 and app2
+  template:
+    src: "{{ tomcat_src_file_app }}"
+    dest: "{{ tomcat_dst_file_all }}"

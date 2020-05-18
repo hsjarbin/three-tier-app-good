@@ -1,0 +1,28 @@
+---
+# tasks file for haproxy
+
+- name: install httpie package
+  package:
+    name: "{{ httpie_package }}"
+    state: latest
+  when: ansible_hostname == 'frontend1'
+
+- name: install HAProxy
+  yum:
+    name: "{{ haproxy_package }}"
+    state: latest
+  when: ansible_hostname == 'frontend1'
+
+- name: start and enable HAProxy
+  service:
+    name: "{{ haproxy_service }}"
+    state: started
+    enabled: true
+  when: ansible_hostname == 'frontend1'
+
+- name: configure HAProxy
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+  notify: restart HAProxy
+  when: ansible_hostname == 'frontend1'

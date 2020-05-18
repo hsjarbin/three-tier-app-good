@@ -1,0 +1,5 @@
+---
+# defaults file for haproxy
+
+http_port_frontend: 80
+http_port_backend: 8080

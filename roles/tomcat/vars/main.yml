@@ -1,0 +1,5 @@
+---
+# vars file for tomcat
+
+tomcat_package: tomcat
+tomcat_service: tomcat

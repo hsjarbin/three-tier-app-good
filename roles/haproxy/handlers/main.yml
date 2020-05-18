@@ -1,0 +1,7 @@
+---
+# handlers file for haproxy
+
+- name: restart HAProxy
+  service:
+    name: "{{ haproxy_service }}"
+    state: restarted

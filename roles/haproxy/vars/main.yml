@@ -1,0 +1,6 @@
+---
+# vars file for haproxy
+
+httpie_package: httpie
+haproxy_package: haproxy
+haproxy_service: haproxy

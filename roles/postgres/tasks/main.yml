@@ -1,0 +1,27 @@
+---
+# tasks file for postgres
+
+- name: install postgres
+  yum:
+    name: "{{ postgres_package }}"
+    state: latest
+
+- name: user message
+  debug:
+    msg: "Either uncomment the postgres setup or manually login and initialize"
+
+- name: check if postgres is initialized
+  stat:
+    path: "{{ postgres_data_dir }}/PG_VERSION"
+  register: postgres_version
+
+- name: initialize postgres
+  command: postgresql-setup initdb
+  when: not postgres_version.stat.exists
+  notify: restart postgres
+
+- name: ensure {{ postgresql_service }} is started and enabled
+  service:
+    name: "{{ postgres_service }}"
+    state: started
+    enabled: true

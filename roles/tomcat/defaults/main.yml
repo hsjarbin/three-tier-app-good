@@ -1,0 +1,13 @@
+---
+# defaults file for tomcat
+tomcat_directory: /usr/share/tomcat/webapps/ROOT
+tomcat_hosts_directory: /usr/share/tomcat/webapps/ansible
+
+tomcat_src_file: index.html.j2
+tomcat_dst_file: /usr/share/tomcat/webapps/ROOT/index.html
+tomcat_dst_mode: 0644
+
+# tomcat_src_file_app1: index.html.app1, using host_vars instead
+# tomcat_src_file_app2: index.html.app2, using host_vars instead
+
+tomcat_dst_file_all: /usr/share/tomcat/webapps/ansible/index.html

@@ -28,8 +28,6 @@ backend app-servers
     balance roundrobin
     option forwardfor
 {% for host in groups['apps'] %}
-
-   server {{ host }} {{ host }}.{{ GUID }}.internal:{{ http_port_backend }} cookie {{ host }} check
-
+    server app{{loop.index}} {{hostvars[host]['inventory_hostname']}}:{{ http_port_backend }} cookie app{{loop.index}} check
 {% endfor %}
 

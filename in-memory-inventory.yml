@@ -1,6 +1,6 @@
 ---
 - name: In-Memory inventory playbook
-  hosts: workstation-15b3.green.osp.opentlc.com
+  hosts: workstation
   tasks:
     - name: Fetch Instance Info
       os_server_info:
